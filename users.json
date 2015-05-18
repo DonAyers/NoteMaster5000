@@ -1,0 +1,26 @@
+{
+  "users":[
+    {"name": "Tim",
+      "id":"23",
+      "notes":[{
+        "title":"grocery list",
+        "content":"milk, toast, butter, steaktoast,milktoast",
+        "tag":"list",
+        "shared":["Tim", "Bob"]
+      },
+      {
+        "title":"to do list",
+        "content":"Finish Resume, apply for jobs, get khakis, live life 4 life.",
+        "tag":"to do",
+        "shared":["Nancy", "Bob", "wife"]
+      },
+      {
+        "title":"thoughts",
+        "content":"Here I will contemplate the mysteries of life... and its inevitable counterpart",
+        "tag":"philsophy",
+        "shared":["God", "Mike"]
+      }
+      ]
+    }
+  ]
+}

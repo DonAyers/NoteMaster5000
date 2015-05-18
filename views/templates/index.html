@@ -1,0 +1,26 @@
+<header>
+	<h1>NoteBoard9000</h1>
+	<a href="/">Choose Another List</a> 
+	<!-- <form action="/user/{{username}}/add">
+	  <input type="submit" class="addBut" value="Add Note" />
+	</form> -->
+</header>
+	<ul>
+<div id="container">
+	{{#each userData.notes}}
+		<div class="note">
+        <div class="card"> 
+            <div class="face front"> 
+              <p>{{.}}</p>
+              <!-- <button class="edit">Edit</button> -->
+            </div> 
+            <div class="face back"> 
+              <form>
+                <textarea></textarea>
+                <button class="save">Save</button>
+              </form>
+            </div> 
+        </div> 
+    </div>
+	{{/each}}
+</div>
