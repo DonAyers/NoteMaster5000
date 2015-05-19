@@ -24,7 +24,7 @@ $(document).ready(function(){
   //   $(".note").not(current).zIndex(0);
   // });
   
-  $('.note').dblclick(function(event){
+  $('.note .front').click(function(event){
   var card = event.target;
   // if($('.card').hasClass("flipped")){
   //     // message = $('textarea').val();
