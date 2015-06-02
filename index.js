@@ -8,7 +8,7 @@ server.connection({
 });
 
 server.start(function(){
-  console.log("hello from hapi");
+  console.log("server running...");
 });
 
 server.views({

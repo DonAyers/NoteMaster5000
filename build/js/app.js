@@ -24,7 +24,11 @@ $(document).ready(function(){
   //   $(".note").not(current).zIndex(0);
   // });
   
+<<<<<<< HEAD
   $('.note').click(function(event){
+=======
+  $('.note .front').click(function(event){
+>>>>>>> origin/master
   var card = event.target;
   // if($('.card').hasClass("flipped")){
   //     // message = $('textarea').val();
