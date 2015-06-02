@@ -39,7 +39,7 @@
   cursor: pointer;
 }
 .note .card .back {
-  -webkit-transform: rotatey(-180deg);
+  transform: rotatey(-180deg);
   background: #3399ff;
   color: black;
   cursor: pointer;
@@ -55,7 +55,7 @@
 
 /* FORM STYLES */
 
-textarea{
+.noteArea{
   margin: 20px;
   height:200px;
   width: 150px;
@@ -65,7 +65,7 @@ textarea{
   position: relative;
 }
 
-button{
+.saveButton{
   width:50px;
   height:30px;
   float:right;
@@ -73,4 +73,12 @@ button{
   border-radius:5px;
   font-family: @font;
   font-size: .5em;
+}
+
+.tagArea{
+  height: 100px;
+  width: 300px;
+  // display:none;
+  z-index: 100;
+  top:-500px;
 }

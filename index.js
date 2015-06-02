@@ -21,7 +21,7 @@ server.views({
   isCached: false
 });
 
-server.route(routes);
+server.route(require("./server/routes"));
 
 
 

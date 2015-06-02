@@ -33,7 +33,7 @@
   cursor: pointer;
 }
 .note .card .back {
-  -webkit-transform: rotatey(-180deg);
+  transform: rotatey(-180deg);
   background: #3399ff;
   color: black;
   cursor: pointer;
@@ -43,7 +43,7 @@
   border-radius: 5px;
 }
 /* FORM STYLES */
-textarea {
+.noteArea {
   margin: 20px;
   height: 200px;
   width: 150px;
@@ -52,7 +52,7 @@ textarea {
   padding: 5px;
   position: relative;
 }
-button {
+.saveButton {
   width: 50px;
   height: 30px;
   float: right;
@@ -60,6 +60,12 @@ button {
   border-radius: 5px;
   font-family: Arial;
   font-size: .5em;
+}
+.tagArea {
+  height: 100px;
+  width: 300px;
+  z-index: 100;
+  top: -500px;
 }
 
 html,
@@ -346,7 +352,7 @@ table {
   cursor: pointer;
 }
 .note .card .back {
-  -webkit-transform: rotatey(-180deg);
+  transform: rotatey(-180deg);
   background: #3399ff;
   color: black;
   cursor: pointer;
@@ -356,7 +362,7 @@ table {
   border-radius: 5px;
 }
 /* FORM STYLES */
-textarea {
+.noteArea {
   margin: 20px;
   height: 200px;
   width: 150px;
@@ -365,7 +371,7 @@ textarea {
   padding: 5px;
   position: relative;
 }
-button {
+.saveButton {
   width: 50px;
   height: 30px;
   float: right;
@@ -373,6 +379,12 @@ button {
   border-radius: 5px;
   font-family: Arial;
   font-size: .5em;
+}
+.tagArea {
+  height: 100px;
+  width: 300px;
+  z-index: 100;
+  top: -500px;
 }
 body {
   background-color: #eeeff7;

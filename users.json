@@ -1,26 +1,32 @@
 {
-  "users":[
-    {"name": "Tim",
-      "id":"23",
-      "notes":[{
-        "title":"grocery list",
-        "content":"milk, toast, butter, steaktoast,milktoast",
-        "tag":"list",
-        "shared":["Tim", "Bob"]
-      },
-      {
-        "title":"to do list",
-        "content":"Finish Resume, apply for jobs, get khakis, live life 4 life.",
-        "tag":"to do",
-        "shared":["Nancy", "Bob", "wife"]
-      },
-      {
-        "title":"thoughts",
-        "content":"Here I will contemplate the mysteries of life... and its inevitable counterpart",
-        "tag":"philsophy",
-        "shared":["God", "Mike"]
-      }
-      ]
+    "users":{
+        "tim": {
+            "notes":[{
+                "id": 1,
+                "text": "remember to pick up the milk",
+                "tags": ["reminder"]
+                },{
+                "id": 2,
+                "text": "Never eat yellow snow",
+                "tags": ["important", "reminder"]
+                },{
+                "id": 3,
+                "text": "Tell terry where to put it",
+                "tags": ["terry", "self help"]
+                }]
+        },
+        "terry": [{
+                "id": 4,
+                "text": "Have a serious discussion with tim",
+                "tags": ["interpersona", "friends"]
+                },{
+                "id": 5,
+                "text": "Medidate for 10 minutes before work",
+                "tags": ["self help", "mental floss"]
+                },{
+                "id": 6,
+                "text": "Cut all ties with that SOB Tim",
+                "tags": ["tim", "the machine"]
+                }]
     }
-  ]
 }

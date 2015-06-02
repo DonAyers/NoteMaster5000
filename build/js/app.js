@@ -24,7 +24,7 @@ $(document).ready(function(){
   //   $(".note").not(current).zIndex(0);
   // });
   
-  $('.note').dblclick(function(event){
+  $('.note').click(function(event){
   var card = event.target;
   // if($('.card').hasClass("flipped")){
   //     // message = $('textarea').val();
@@ -34,7 +34,7 @@ $(document).ready(function(){
   // }else{
  
      var message = $(this).find('.front p').text();
-     $(this).find('textarea').val(message);
+     $(this).find('noteArea').val(message);
      console.log(message);
 
   // }
