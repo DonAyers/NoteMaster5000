@@ -476,3 +476,10 @@ form {
 #container {
   text-align: left;
 }
+
+.faBox{
+  position: absolute;
+  bottom:0;
+  left: 30%;
+  display:none;
+}

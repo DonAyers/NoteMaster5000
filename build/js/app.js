@@ -24,27 +24,44 @@ $(document).ready(function(){
   //   $(".note").not(current).zIndex(0);
   // });
   
-<<<<<<< HEAD
-  $('.note').click(function(event){
-=======
-  $('.note .front').click(function(event){
->>>>>>> origin/master
-  var card = event.target;
-  // if($('.card').hasClass("flipped")){
-  //     // message = $('textarea').val();
-  //     // $('.front p').text(message);
-  //     // messages.push(message);
-  //     // console.log("flip to front:", message);
-  // }else{
- 
-     var message = $(this).find('.front p').text();
-     $(this).find('noteArea').val(message);
-     console.log(message);
 
-  // }
-  $(card).closest('.card').toggleClass('flipped');
-  // console.log($(this));
-  return false;
+$(".fa-times").click(function(){
+  var el = $(this).closest(".note");
+  var id = el.attr("data-id");
+  console.log(id);
+  // $.post( "/delete/" + id, { id: id});
 });
+
+$('.note').hover(function(e){
+ var el = $(e.target).closest(".faBox");
+ el.velocity("fadeIn", { duration: 200})
+ console.log(el);
+});
+
+
+
+
+
+//   $('.note').click(function(event){
+//     $('.note .front').click(function(event){
+//     var card = event.target;
+//   // if($('.card').hasClass("flipped")){
+//   //     // message = $('textarea').val();
+//   //     // $('.front p').text(message);
+//   //     // messages.push(message);
+//   //     // console.log("flip to front:", message);
+//   // }else{
+ 
+//      var message = $(this).find('.front p').text();
+//      $(this).find('noteArea').val(message);
+//      console.log(message);
+
+//   // }
+//   $(card).closest('.card').toggleClass('flipped');
+//   // console.log($(this));
+//   return false;
+// });
+
+// });
 
 });

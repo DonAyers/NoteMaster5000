@@ -1,29 +1,34 @@
-var fs = require("fs");
+//index.js
 var hapi = require("hapi");
 var server = new hapi.Server();
-var routes = require("./server/routes");
 
-server.connection({
-  port: 8000
-});
-
-server.start(function(){
-  console.log("server running...");
-});
-
+server.connection({port:8080});
 server.views({
-  path: "views/templates",
-  layoutPath:"views/",
-  layout:"default",
-  engines: {
-    html: require("handlebars")
-  },
-  isCached: false
+	engines: {
+		html: require("handlebars")
+	},
+	path: "./views",
+	layoutPath: ".",
+	layout: "layout",
+	isCached: false
 });
 
-server.route(require("./server/routes"));
+var Note = require("./models/note");
+
+var sql = require("./database");
+sql.init(function(){
+	console.log("database ready");
+	var note = new Note({
+		content:"pick up milk"
+	});
+	note.create();
+	// sql.connection.all("SELECT * FROM notes", function(err, results){
+	// 	console.log(err, results);
+	// });
+	// console.log(note.toJSON);
+	server.start();
+});
 
 
-
-
-
+var routes = require("./routes")
+server.route(routes);
