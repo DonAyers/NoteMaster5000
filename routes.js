@@ -10,7 +10,12 @@ module.exports = [
 	    method: "POST",
 	    path: "/delete/{id}",
 	    handler: require("./handlers/delete")
-  	},	
+  	},
+  	{
+	    method: "POST",
+	    path: "/create/",
+	    handler: require("./handlers/create")
+  	},		
 	{
 	    method: "GET",
 	    path: "/assets/{param*}",

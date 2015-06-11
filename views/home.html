@@ -1,15 +1,28 @@
 <header>
 	<h1>{{title}}</h1>
 </header>
+<div class="addContain">
+    <form>
+      <textarea class="contentBox" placeholder="Enter your note here"></textarea>
+      <i class="fa fa-tag"></i>
+      <input type="text" name="tag" class="tagBox" placeholder="  category">
+      <i class="fa fa-floppy-o"></i>
+    </form>
+    <div class="addBut">
+      <i class="fa fa-plus"></i>
+    </div>
+  </div>
 <div id="container">
 	{{#each notes}}
 		<div class="note" data-id="{{id}}">
         <div class="card"> 
             <div class="face front"> 
               <p>{{content}}</p>
+              <h3>{{id}}</h3>
               <div class="faBox">
-	              <i class="fa fa-times"></i>
-	              <i class="fa fa-tag"></i>
+	              {{tag}}
+                <i class="fa fa-times"></i>
+	              <i data-tag='{{tag}}' class="fa fa-tag"></i>
 	              <i class="fa fa-pencil"></i>
               </div>
             </div> 
@@ -17,7 +30,6 @@
               <form>
                 <textarea class="noteArea"></textarea>
                 <button class="saveButton">Save</button>
-                <textarea  class="tagArea"></textarea>
                 <button class="tagButton">Tags</button>
               </form>
             </div> 

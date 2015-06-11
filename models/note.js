@@ -33,13 +33,13 @@ var Note = Backbone.Model.extend({
 	delete: function(callback){
 		calback = callback || function(){};
 		//get data
-		var data = this.toJson();
+		var data = this.toJSON();
 		var statement = sql.connection.prepare(DELETE);
 		statement.run({
 			$id: data.id
 		}, function(err){
 			if(err) console.log(err);
-			done();
+			callback();
 		});
 
 	}
