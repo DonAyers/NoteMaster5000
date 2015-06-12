@@ -4,12 +4,17 @@ var colors = ["#e74c3c", "#3498db","#2ecc71","#f1c40f", "#9b59b6", "#e67e22", "#
 var colorNum = 0;
 var zIndex = 1;
 $(document).ready(function(){
-  $('.front').each(function(event){
-    $(this).css("background-color", colors[colorNum]);
-    colorNum++;
-    $(event.target).closest('.back').css("background-color", colors[colorNum]);
-    if(colorNum == 7) colorNum = 0;
-  });
+  
+  var formReset = function(){
+
+  };
+
+  // $('.front').each(function(event){
+  //   $(this).css("background-color", colors[colorNum]);
+  //   colorNum++;
+  //   $(event.target).closest('.back').css("background-color", colors[colorNum]);
+  //   if(colorNum == 7) colorNum = 0;
+  // });
 	 
   // $(".note")
   //   .velocity("transition.bounceIn", { 
@@ -30,8 +35,7 @@ $(document).ready(function(){
 $(".fa-times").click(function(){
   var el = $(this).closest(".note");
   var id = el.attr("data-id");
-  console.log(id);
-  // $.post( "/delete/" + id, { id: id});
+//  console.log(id);
   var request = $.ajax({
     url: "delete/" + id,
     method: "POST"
@@ -52,11 +56,46 @@ $(".fa-times").click(function(){
 
 });
 
+$(".saveButton").click(function(){
+  var user = "Tim";
+  var content = $(".noteArea").text();
+  console.log(content);
+  var tag = $(".tagBox").val();
+  
+  // var request = $.ajax({
+  //   url: "create/",
+  //   method: "POST",
+  //   data: {
+  //     user: user,
+  //     tag: tag,
+  //     content: content
+  //   }
+  // });
+  
+  // request.done(function() {
+  //   console.log( "success" );
+    
+   document.location.reload(true);
+  
+    
+  // });
+  
+  // request.fail(function() {
+  //   console.log( "error" );
+  // });
+
+  // request.always(function(){
+  //   console.log("always");
+  // });
+
+
+});
+
 $(".fa-floppy-o").click(function(){
   var user = "Tim";
   var content = $(".contentBox").val();
   var tag = $(".tagBox").val();
-  console.log("save clicked");
+  
   var request = $.ajax({
     url: "create/",
     method: "POST",
@@ -81,6 +120,7 @@ $(".fa-floppy-o").click(function(){
       toggled = true;
       position = "0px";
     }
+   // document.location.reload(true);
   }});
     
   });
@@ -126,25 +166,36 @@ $(".addBut").click(function(){
 
 
 
-  $('.note').click(function(event){
-    $('.note .front').click(function(event){
+  $('.fa-pencil').click(function(event){
+    // $('.note .front').click(function(event){
     var card = event.target;
+    var message = $(card).find('.front p').text();
+    
+
+    var cardBox = card.closest('.note');
+    var tag = $(cardBox).find('.tag').text();
+    var message = $(cardBox).find('p').text();
+    console.log(message);
+    console.log(tag);
+
+    $(cardBox).find('textarea').val(message);
+    $(cardBox).find('input').val(tag);
   // if($('.card').hasClass("flipped")){
-  //     // message = $('textarea').val();
-  //     // $('.front p').text(message);
-  //     // messages.push(message);
-  //     // console.log("flip to front:", message);
+  //     message = $('textarea').val();
+  //     $('.front p').text(message);
+  //     messages.push(message);
+  //     console.log("flip to front:", message);
   // }else{
  
-     var message = $(this).find('.front p').text();
-     $(this).find('noteArea').val(message);
-     console.log(message);
+     
+  //    $(this).find('noteArea').val(message);
+  //    console.log(message);
 
   // }
   $(card).closest('.card').toggleClass('flipped');
   // console.log($(this));
-  return false;
-});
+  //return false;
+// });
 
 });
 

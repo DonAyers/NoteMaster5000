@@ -3,7 +3,7 @@
 var Backbone = require("backbone");
 var sql = require("../database");
 
-var CREATE = "INSERT INTO notes (content, user, tag) VALUES ($content, $user, $tag);";
+var CREATE = "INSERT INTO notes (content, user, tag, color) VALUES ($content, $user, $tag, $color);";
 var DELETE = "DELETE FROM notes WHERE rowid = $id;";
 
 var Note = Backbone.Model.extend({
@@ -11,6 +11,7 @@ var Note = Backbone.Model.extend({
 		content: "",
 		user: "anonymous",
 		tag: "",
+		color: "#e74c3c",
 		id: null
 	},
 	create: function(callback){
@@ -23,7 +24,8 @@ var Note = Backbone.Model.extend({
 		sql.connection.run(CREATE, {
 			$content: data.content,
 			$user: data.user,
-			$tag: data.tag
+			$tag: data.tag,
+			$color: data.color
 		}, function(err){
 			if(err) console.log(err);
 			callback();
@@ -42,6 +44,20 @@ var Note = Backbone.Model.extend({
 			callback();
 		});
 
+	},
+	update: function(callback){
+		callback = callback || function(){};
+		var data = this.toJSON();
+		var statement = sql.connection.prepare(UPDATE);
+		statement.run(UPDATE,{
+			$id: data.id,
+			$content: data.content,
+			$tag: data.tag,
+			$color: color
+		}, function(err){
+			if(err) console.log(err);
+			callback();
+		});
 	}
 });
 

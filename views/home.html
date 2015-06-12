@@ -16,22 +16,21 @@
 	{{#each notes}}
 		<div class="note" data-id="{{id}}">
         <div class="card"> 
-            <div class="face front"> 
-              <p>{{content}}</p>
-              <h3>{{id}}</h3>
+            <div class="face front" style="background-color:{{color}}"> 
+              <p class="message">{{content}}</p>
+              <h4>{{id}}</h4>
+              <h4 class="tag">{{tag}}</h4>
               <div class="faBox">
-	              {{tag}}
                 <i class="fa fa-times"></i>
 	              <i data-tag='{{tag}}' class="fa fa-tag"></i>
 	              <i class="fa fa-pencil"></i>
               </div>
             </div> 
             <div class="face back"> 
-              <form>
+              
                 <textarea class="noteArea"></textarea>
+                <input class="tagBoxSmall"></input>
                 <button class="saveButton">Save</button>
-                <button class="tagButton">Tags</button>
-              </form>
             </div> 
         </div> 
     </div>

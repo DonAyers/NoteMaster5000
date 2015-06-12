@@ -6,7 +6,7 @@ var facade = {
 	init: function(callback){
 		var db = new sqlite.Database("notes.db");
 		facade.connection = db;
-		db.run("CREATE TABLE IF NOT EXISTS notes (content, user, id, tag)", function(){
+		db.run("CREATE TABLE IF NOT EXISTS notes (content, user, id, tag, color)", function(){
 			callback();
 		});
 	}

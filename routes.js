@@ -3,7 +3,7 @@
 module.exports = [
 	{
 		method: "GET",
-		path: "/",
+		path: "/{user?}",
 		handler: require("./handlers/home")
 	},
 	{
@@ -15,6 +15,11 @@ module.exports = [
 	    method: "POST",
 	    path: "/create/",
 	    handler: require("./handlers/create")
+  	},
+  	{
+	    method: "POST",
+	    path: "/update/{id}",
+	    handler: require("./handlers/update")
   	},		
 	{
 	    method: "GET",

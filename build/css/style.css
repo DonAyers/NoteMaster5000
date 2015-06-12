@@ -50,30 +50,18 @@
   border-radius: 5px;
 }
 /* FORM STYLES */
-.noteArea {
-  margin: 20px;
+/*.noteArea {
+  margin: 0 auto;
   height: 200px;
   width: 150px;
   border-radius: 5px;
   font-size: 15px;
   padding: 5px;
+  padding-bottom: 0;
   position: relative;
-}
-.saveButton {
-  width: 50px;
-  height: 30px;
-  float: right;
-  margin-right: 20px;
-  border-radius: 5px;
-  font-family: Arial;
-  font-size: .5em;
-}
-.tagArea {
-  height: 100px;
-  width: 300px;
-  z-index: 100;
-  top: -500px;
-}
+}*/
+
+
 
 html,
 body,
@@ -376,30 +364,43 @@ table {
   border-radius: 5px;
 }
 /* FORM STYLES */
+.tagBoxSmall, .noteArea{
+  text-decoration: none;
+  border: none;
+  box-shadow: none;
+}
+
+
 .noteArea {
-  margin: 20px;
+  margin: 0 auto;
+  margin-top:20px;
   height: 200px;
-  width: 150px;
-  border-radius: 5px;
+  width: 80%;
+  border-radius: 5px 5px 0 0 ;
   font-size: 15px;
   padding: 5px;
   position: relative;
+  resize:none;
 }
+.tagBoxSmall{
+  position: relative;
+  margin: 0;
+  top: -30px;
+  border-top: 1px solid black;
+  width:85%;
+
+
+
+}
+
+
 .saveButton {
-  width: 50px;
-  height: 30px;
-  float: right;
-  margin-right: 20px;
-  border-radius: 5px;
-  font-family: Arial;
-  font-size: .5em;
+  
 }
 .tagArea {
-  height: 100px;
-  width: 300px;
-  z-index: 100;
-  top: -500px;
+  
 }
+
 body {
   background-color: #eeeff7;
   text-align: center;
@@ -565,10 +566,33 @@ form .fa-floppy-o{
 input:focus{
   background: #FFF2EE;
 }
+
 textarea, input{
   background: #F0F4F5;
 }
 textarea{
   padding: 10px;
+}
+
+.loginContain{
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  background-color:#eeeff7;
+  position: absolute;
+
+  
+}
+
+.login{
+  width:500px;
+  margin: auto;
+  text-align: center;
+}
+
+.login input{
+  display: inline-block;
+  margin-top: 50px;
+
 }
 
