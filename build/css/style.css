@@ -376,7 +376,7 @@ table {
   margin-top:20px;
   height: 200px;
   width: 80%;
-  border-radius: 5px 5px 0 0 ;
+  border-radius: 4px 4px 0 0 ;
   font-size: 15px;
   padding: 5px;
   position: relative;
@@ -386,8 +386,9 @@ table {
   position: relative;
   margin: 0;
   top: -30px;
-  border-top: 1px solid black;
+  border-top: 1px solid #969899;
   width:85%;
+  border-radius: 0 0 4px 4px;
 
 
 

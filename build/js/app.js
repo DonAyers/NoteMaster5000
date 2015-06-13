@@ -75,7 +75,7 @@ $(".saveButton").click(function(){
   // request.done(function() {
   //   console.log( "success" );
     
-   document.location.reload(true);
+  document.location.reload(true);
   
     
   // });
@@ -120,7 +120,7 @@ $(".fa-floppy-o").click(function(){
       toggled = true;
       position = "0px";
     }
-   // document.location.reload(true);
+  document.location.reload(true);
   }});
     
   });
