@@ -57,36 +57,50 @@ $(".fa-times").click(function(){
 });
 
 $(".saveButton").click(function(){
+  
+  var el = $(this).closest(".note");
+  var id = el.attr("data-id");
   var user = "Tim";
-  var content = $(".noteArea").text();
-  console.log(content);
-  var tag = $(".tagBox").val();
+  var content = el.find(".noteArea").val();
+  var tag = el.find(".tagBoxSmall").val();
+  var color = "#9b59b6";
+  var url ="update/" + id;
   
-  // var request = $.ajax({
-  //   url: "create/",
-  //   method: "POST",
-  //   data: {
-  //     user: user,
-  //     tag: tag,
-  //     content: content
-  //   }
-  // });
+  console.log(id, content, tag, color);
   
-  // request.done(function() {
-  //   console.log( "success" );
-    
-  document.location.reload(true);
-  
-    
-  // });
-  
-  // request.fail(function() {
-  //   console.log( "error" );
-  // });
 
-  // request.always(function(){
-  //   console.log("always");
-  // });
+  var request = $.ajax({
+    url: url,
+    method: "POST",
+    // beforeSend: function(){
+    //   content = el.closest(".noteArea").val();
+    //   console.log("beforeSend");
+    // },
+    data: {
+      user: user,
+      tag: tag,
+      content: content,
+      color: color
+    }
+    
+  });
+  
+  request.done(function() {
+    console.log("success");
+    console.log(user, content, tag);
+    
+  //document.location.reload(true);
+  
+    
+  });
+  
+  request.fail(function() {
+    console.log( "error" );
+  });
+
+  request.always(function(){
+    console.log("Post: " + url);
+  });
 
 
 });
@@ -175,8 +189,8 @@ $(".addBut").click(function(){
     var cardBox = card.closest('.note');
     var tag = $(cardBox).find('.tag').text();
     var message = $(cardBox).find('p').text();
-    console.log(message);
-    console.log(tag);
+    // console.log(message);
+    // console.log(tag);
 
     $(cardBox).find('textarea').val(message);
     $(cardBox).find('input').val(tag);
