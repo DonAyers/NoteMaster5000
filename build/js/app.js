@@ -4,7 +4,7 @@ var tempColor = "#e74c3c";
 var zIndex = 1;
 $(document).ready(function(){
 
-  $(".colorPicker").spectrum({
+  $(".colorPicker, #plusColor").spectrum({
       showPaletteOnly: true,
       showPalette:true,
       color: "#e74c3c",
@@ -79,7 +79,7 @@ $(document).ready(function(){
       console.log("success");
       console.log(user, content, tag,color);
       
-    //document.location.reload(true);
+    document.location.reload(true);
     
       
     });
@@ -99,6 +99,7 @@ $(document).ready(function(){
     var user = "Tim";
     var content = $(".contentBox").val();
     var tag = $(".tagBox").val();
+    var color = tempColor;
     
     var request = $.ajax({
       url: "create/",
@@ -106,7 +107,8 @@ $(document).ready(function(){
       data: {
         user: user,
         tag: tag,
-        content: content
+        content: content,
+        color: color
       }
     });
     

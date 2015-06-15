@@ -435,6 +435,11 @@ table {
   margin-right:20px;
 }
 
+.colorWrapper{
+  position: absolute;
+  left:280px;
+  bottom:25px;
+}
 
 body {
   background-color: #eeeff7;

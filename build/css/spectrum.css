@@ -293,7 +293,7 @@ See http://bgrins.github.io/spectrum/themes/ for instructions.
    color: #222;
 }
 .sp-input:focus  {
-    border: 1px solid orange;
+    border: 1px solid #C0C0C0;
 }
 .sp-input.sp-validation-error {
     border: 1px solid red;
@@ -331,7 +331,7 @@ See http://bgrins.github.io/spectrum/themes/ for instructions.
     border:solid 2px transparent;
 }
 .sp-palette .sp-thumb-el:hover, .sp-palette .sp-thumb-el.sp-thumb-active {
-    border-color: orange;
+    border-color: #E5E5E5;
 }
 .sp-thumb-el {
     position:relative;
