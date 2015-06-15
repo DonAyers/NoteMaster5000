@@ -330,8 +330,8 @@ table {
   height: 100%;
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
-  -webkit-transition: all 350ms cubic-bezier(0.39, 0.575, 0.565, 1);
-          transition: all 350ms cubic-bezier(0.39, 0.575, 0.565, 1);
+  -webkit-transition: all 200ms cubic-bezier(0.39, 0.575, 0.565, 1);
+          transition: all 200ms cubic-bezier(0.39, 0.575, 0.565, 1);
 }
 .note .card .face {
   width: 100%;
@@ -387,8 +387,11 @@ table {
   margin: 0;
   top: -30px;
   border-top: 1px solid #969899;
-  width:85%;
+  width:83%;
   border-radius: 0 0 4px 4px;
+  font-family: 'Asap', sans-serif;
+  height: 25px;
+  padding: 2px;
 
 
 
@@ -396,11 +399,42 @@ table {
 
 
 .saveButton {
-  
+  /*position: absolute;*/
+  top: 0px;
 }
-.tagArea {
-  
+.iconBack {
+  margin: 0 auto;
+  margin-top:-30px;
+  height: 30px;
+  width: 80%;
+  border-radius: 4px 4px 0 0 ;
+  padding: 5px;
+  position: relative;
+    
+
 }
+
+.tagLabel p, .tagLabel i{
+  display: inline;
+  font-size: 15px;
+}
+.tagLabel{
+  position: absolute;
+  bottom:5px;
+  left:10px;
+
+}
+
+.fa-save{
+ margin-left:20px;
+ background-color: white;
+ padding: 5px;
+ border-radius: 3px;
+}
+.fa-arrow-circle-left{
+  margin-right:20px;
+}
+
 
 body {
   background-color: #eeeff7;
@@ -436,7 +470,7 @@ a {
   width: 100px;
   margin: 10px;
 }
-p {
+.message {
   font-size: 20px;
   padding: 10px;
 }
@@ -445,10 +479,25 @@ p {
   margin: 0 auto;
   margin-top:75px;
 }*/
-#message {
-  height: 500px;
-  width: 50%;
-  font-size: 25px;
+
+.fa-times{
+  position: absolute;
+  top:2px;
+  right:10px;
+  padding:1px;
+}
+.fa-times:hover{
+  background-color:#e74c3c;
+  border-radius: 3px;
+}
+
+.fa-pencil{
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+.message {
+  margin-top: 10px;
   font-family: 'Asap', sans-serif;
 }
 form {

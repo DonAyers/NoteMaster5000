@@ -50,8 +50,8 @@ var Note = Backbone.Model.extend({
 		callback = callback || function(){};
 		var data = this.toJSON();
 		var statement = sql.connection.prepare(UPDATE);
-		console.log(data.id, data.content, data.color, data.tag);
-		statement.run(UPDATE,{
+		console.log(data);
+		statement.run({
 			$id: data.id,
 			$content: data.content,
 			$tag: data.tag,
@@ -63,7 +63,7 @@ var Note = Backbone.Model.extend({
 	}
 });
 
-var note = new Note();
-console.log(note.toJSON());
+// var note = new Note();
+// console.log(note.toJSON());
 
 module.exports = Note;

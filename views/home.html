@@ -14,23 +14,31 @@
   </div>
 <div id="container">
 	{{#each notes}}
-		<div class="note" data-id="{{id}}">
+		<div class="note" data-id="{{id}}" data-color:"{{color}}">
         <div class="card"> 
             <div class="face front" style="background-color:{{color}}"> 
               <p class="message">{{content}}</p>
-              <h4>{{id}}</h4>
-              <h4 class="tag">{{tag}}</h4>
-              <div class="faBox">
-                <i class="fa fa-times"></i>
-	              <i data-tag='{{tag}}' class="fa fa-tag"></i>
-	              <i class="fa fa-pencil"></i>
+              <div class="tagLabel">
+                <i class="fa fa-tag"></i>
+                <p class="tag">{{tag}}</p>
+
               </div>
+              
+                <i class="fa fa-times"></i>
+	              
+	              <i class="fa fa-pencil"></i>
+              
             </div> 
             <div class="face back"> 
               
                 <textarea class="noteArea"></textarea>
                 <input class="tagBoxSmall"></input>
-                <button class="saveButton">Save</button>
+                <div class="iconBack">
+                  <i class="fa fa-arrow-circle-left"></i>
+                  <input type='text' class="colorPicker" />
+                  <i class="fa fa-save"></i>
+                  <div class="colorPicker"></div>
+                </div>
             </div> 
         </div> 
     </div>

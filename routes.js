@@ -18,7 +18,7 @@ module.exports = [
   	},
   	{
 	    method: "POST",
-	    path: "/update/{id}",
+	    path: "/update/",
 	    handler: require("./handlers/update")
   	},		
 	{
