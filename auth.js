@@ -6,6 +6,10 @@ module.exports = function(username, pass, callback){
 	    jim: {
 	        username: "jim",
 	        password: "jim123"
+	    },
+	    martha: {
+	    	username: "martha",
+	    	password: "martha123"
 	    }
 	};
 	var user = users[username].username;
@@ -14,7 +18,9 @@ module.exports = function(username, pass, callback){
 	console.log("auth.js:", user, password);
 	console.log("sent in:", username, password);
 	
-	if(user == username && password == pass){
+	if (!user) {
+        return callback(false);
+    }else if(user == username && password == pass){
     	return callback(true);
     }else{
     	return callback(false);
