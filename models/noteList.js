@@ -8,7 +8,9 @@ var NoteList = Backbone.Collection.extend({
 	model: Note,
 	load: function(callback){
 		var self = this;
-		//select all notes from db
+		//get user
+
+		//select users notes from db
 		var q = "SELECT content, user, tag, color, rowid as id FROM notes;";
 		sql.connection.all(q, function(err, results){
 			//populate list from said data

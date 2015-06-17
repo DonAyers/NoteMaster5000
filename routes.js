@@ -7,6 +7,11 @@ module.exports = [
 		handler: require("./handlers/home")
 	},
 	{
+		method: "POST",
+		path: "/login",
+		handler: require("./handlers/login")
+	},
+	{
 	    method: "POST",
 	    path: "/delete/{id}",
 	    handler: require("./handlers/delete")

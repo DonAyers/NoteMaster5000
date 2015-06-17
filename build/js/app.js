@@ -25,7 +25,15 @@ $(document).ready(function(){
     current.zIndex(1);
     $(".note").not(current).zIndex(0);
   });
-    
+
+  $(".note").resizable({
+      maxHeight: 750,
+      maxWidth: 750,
+      minHeight: 300,
+      minWidth: 200,
+      ghost: true
+    });
+
 
   $(".fa-times").click(function(){
     var el = $(this).closest(".note");
@@ -96,7 +104,7 @@ $(document).ready(function(){
   });
 
   $(".fa-floppy-o").click(function(){
-    var user = "Tim";
+    var user = "martha";
     var content = $(".contentBox").val();
     var tag = $(".tagBox").val();
     var color = tempColor;
