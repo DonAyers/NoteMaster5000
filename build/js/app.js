@@ -17,9 +17,7 @@ $(document).ready(function(){
       ]
   });
   
-  $(".note").draggable(
-    //{ snap: ".note" }
-    ).click(function(){
+  $(".note").draggable().click(function(){
     var current = $(this);
     zIndex++;
     current.zIndex(1);
@@ -32,7 +30,7 @@ $(document).ready(function(){
       minHeight: 300,
       minWidth: 200,
       ghost: true
-    });
+  });
 
 
   $(".fa-times").click(function(){
