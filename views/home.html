@@ -15,12 +15,19 @@
       <i class="fa fa-plus"></i>
     </div>
   </div>
+  <div class="tagContain">
+    <div class="filterBut">
+      <i class="fa fa-filter"></i>
+    </div>
+    <ul>
+
+  </div>
+  
 <div id="container">
 	{{#each notes}}
-		<div class="note" data-id="{{id}}" data-color:"{{color}}">
+		<div class="note" data-id="{{id}}" data-color:"{{color}}" data-user="{{user}}">
         <div class="card"> 
             <div class="face front" style="background-color:{{color}}"> 
-              {{user}}
               <p class="message">{{content}}</p>
               <div class="tagLabel">
                 <i class="fa fa-tag"></i>

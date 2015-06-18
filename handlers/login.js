@@ -10,7 +10,7 @@ module.exports = function(req, res){
 
   	auth(user, pass, function(authed){
   		if(authed){
-  		res.state("loggedIn", "true");
+  		res.state("loggedIn", user);
   		res.redirect("/" + user);
   		
       console.log("not authed");

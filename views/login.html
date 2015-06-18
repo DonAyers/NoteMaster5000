@@ -1,10 +1,26 @@
 <header>
 	<h1>NoteMaster5000 - Login</h1>
 </header>
-<div class="loginContain">
-	<form class="login" method="POST" action="/login">
-		<input type="text" name="username" placeholder="username">
-		<input type="text" name="password" placeholder="password">
-		<input type="submit">
-	</form>
+<div id="loginContainer">
+	<div id="insideContainer">
+		<div class="card" style="background-color:"> 
+			<div class="face front"> 
+				<form class="login" method="POST" action="/login">
+					Login
+					<input type="text" name="username" placeholder="username">
+					<input type="text" name="password" placeholder="password">
+					<input type="submit">
+					<a onclick="return false" href="">Create Account</a>
+				</form>
+			</div> 
+			<div class="face back"> 
+				<form class="signUp">
+					<input type="text" name="username" placeholder="username">
+					<input type="text" name="password" placeholder="password">
+					<input type="text" name="confirm" placeholder="confirm password">
+					<input type="submit">
+				</form>
+			</div> 
+		</div> 
+	</div>	
 </div>

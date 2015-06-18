@@ -25,7 +25,7 @@ module.exports = function(grunt){
         flatten: true,
         expand: true,
         src: "src/css/*.css",
-        dest: "build/css"
+        dest: "build/css/"
       }
     },
     watch: {
@@ -33,21 +33,24 @@ module.exports = function(grunt){
         livereload: 8080
       },
       css: {
-        files: "src/**/*.less",
+        files: "build/css/**/*.css",
         tasks: ["autoprefixer"]
       },
+      js: {
+        files: "**/*.js"
+      },
+      less: {
+        files: "**/*.less",
+        tasks: ["less"]
+      },
       html: {
-        files: "**/*.html",
-        tasks: []
+        files: "**/*.html"
       }
     },
     less: {
       development: {
-        options: {
-          paths: ["assets/css"]
-        },
         files: {
-          "build/css/style.css": "src/css/*.less"
+          "build/css/style.css": "src/less/style.less"
         }
       }
     }
