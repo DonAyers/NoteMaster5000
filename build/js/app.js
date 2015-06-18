@@ -24,21 +24,21 @@ $(document).ready(function(){
     drag:true
   });
 
-  var user = $(".note").attr("data-user");
-  console.log(user);
-  var tags = [];
-  var uniqueTags = [];
+  // var user = $(".note").attr("data-user");
+  // console.log(user);
+  // var tags = [];
+  // var uniqueTags = [];
 
-  $('.tag').each(function (index, value) {
-    tags.push($(value).text());
-  });
+  // $('.tag').each(function (index, value) {
+  //   tags.push($(value).text());
+  // });
 
-  console.log(tags);
-  $.each(tags, function (index, value){
-    if($.inArray(value, uniqueTags) === -1){
-      $(".tagContain ul").append("<li><a href='" + user + "/" + value + "'>" + value + "</a>");
-    }
-  }); 
+  // console.log(tags);
+  // $.each(tags, function (index, value){
+  //   if($.inArray(value, uniqueTags) === -1){
+  //     $(".tagContain ul").append("<li><a href='" + user + "/" + value + "'>" + value + "</a>");
+  //   }
+  // }); 
 
   //uniqueTags.push(value);
 

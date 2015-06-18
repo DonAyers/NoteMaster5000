@@ -625,3 +625,7 @@ textarea {
   border-radius: 4px 0 0 4px ;
   cursor: pointer;
 }
+.filterBut,
+.tagContain {
+  z-index: 10000;
+}
