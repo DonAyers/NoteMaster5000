@@ -2,6 +2,13 @@
 
 var tempColor = "#e74c3c";
 var zIndex = 1;
+$(".note")
+    .velocity("transition.bounceDownIn", {
+    display: null,
+    stagger: 25,
+    drag:true
+  });
+
 $(document).ready(function(){
 
   $(".colorPicker, #plusColor").spectrum({
@@ -15,13 +22,6 @@ $(document).ready(function(){
       palette: [
           ["#e74c3c", "#3498db","#2ecc71","#f1c40f", "#9b59b6", "#e67e22", "#1abc9c", "#674172"]
       ]
-  });
-
-  $(".note")
-    .velocity("transition.bounceDownIn", {
-    display: null,
-    stagger: 25,
-    drag:true
   });
 
   // var user = $(".note").attr("data-user");
@@ -179,6 +179,51 @@ $(document).ready(function(){
 
   });
 
+$(".signUp input[type=submit]").click(function(){
+    
+    var username = $(".signUp input[name=username]").val();
+    var password = $(".signUp input[name=password]").val();
+    var confirmPass = $("input[name=confirm]").val();
+    console.log(username, password, confirmPass );
+    
+    if(password == confirmPass){
+      console.log("pass = confirmPass");
+      var request = $.ajax({
+        url: "signup/",
+        method: "POST",
+        data: {
+          username: username,
+          password: password
+        }
+      });
+      
+      request.done(function() {
+        console.log( "success" );
+        
+        //document.location.reload(true);
+      });
+        
+      
+      
+      request.fail(function() {
+        console.log( "error" );
+      });
+
+      request.always(function(){
+        console.log("always");
+      });
+
+  }else{
+    $(".signUp").velocity('callout.shake').append("<p class='error'>password doesn't match<p>");
+    $(".error").delay(1000).velocity({opacity: 0}, 1000);
+    
+
+
+  }
+
+
+  });
+
 
   var toggled = false;
   var position = "400px";
@@ -233,11 +278,7 @@ $(document).ready(function(){
     $(card).closest('.card').toggleClass('flipped');
   });
 
-  $('.fa-arrow-circle-left').click(function(event){
-    var card = event.target;
-    $(card).closest('.card').toggleClass('flipped');
-  });
-
+  
   $('.login a').click(function(event){
     console.log("a clicked");
     var card = event.target;
@@ -255,6 +296,11 @@ $(document).ready(function(){
   $('.fa-arrow-circle-left').click(function(event){
     var card = event.target;
     $(card).closest('.card').toggleClass('flipped');
+  });
+
+  $(".fa-sign-out").click(function(){
+    Cookies.remove('loggedIn');
+    window.location.replace("/");
   });
 
 });

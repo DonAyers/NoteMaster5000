@@ -1,5 +1,5 @@
 <header>
-	<h1>NoteMaster5000 - Login</h1>
+	<h1>{{title}}</h1>
 </header>
 <div id="loginContainer">
 	<div id="insideContainer">
@@ -8,17 +8,18 @@
 				<form class="login" method="POST" action="/login">
 					Login
 					<input type="text" name="username" placeholder="username">
-					<input type="text" name="password" placeholder="password">
+					<input type="password" name="password" placeholder="password">
 					<input type="submit">
 					<a onclick="return false" href="">Create Account</a>
 				</form>
 			</div> 
 			<div class="face back"> 
 				<form class="signUp">
+					Create Account
 					<input type="text" name="username" placeholder="username">
-					<input type="text" name="password" placeholder="password">
-					<input type="text" name="confirm" placeholder="confirm password">
-					<input type="submit">
+					<input type="password" name="password" placeholder="password">
+					<input type="password" name="confirm" placeholder="confirm password">
+					<input onclick="return false" type="submit" value="Sign Up">
 				</form>
 			</div> 
 		</div> 

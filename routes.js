@@ -17,9 +17,19 @@ module.exports = [
 	    handler: require("./handlers/delete")
   	},
   	{
+	    method: "GET",
+	    path: "/{user}/{tag}",
+	    handler: require("./handlers/tag")
+  	},
+  	{
 	    method: "POST",
 	    path: "/create/",
 	    handler: require("./handlers/create")
+  	},
+  	{
+	    method: "POST",
+	    path: "/signup/",
+	    handler: require("./handlers/signup")
   	},
   	{
 	    method: "POST",
@@ -31,7 +41,8 @@ module.exports = [
 	    path: "/assets/{param*}",
 	    handler: {
 	        directory: {
-	            path: "build/"
+	            path: "build"
+
 	        }
 	    }
 	}

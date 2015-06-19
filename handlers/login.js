@@ -14,7 +14,6 @@ module.exports = function(req, res){
   		res.redirect("/" + user);
   		
       console.log("not authed");
-  		
       }else{
 	  		//res.state("loggedIn", "true");
 	  		res.view("login", {

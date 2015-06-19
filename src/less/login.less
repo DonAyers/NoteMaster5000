@@ -1,6 +1,7 @@
 @import url(http://fonts.googleapis.com/css?family=Ubuntu:300);
 
-@loginText: black;
+@loginText: white;
+@inputText: #4D4D4D;
 
 #loginContainer{
 	text-align: center;
@@ -19,8 +20,8 @@
 }
 
 #insideContainer{
-  padding:120px 0;
-  font-size:62px;
+  padding:20px 0;
+  font-size:50px;
   color:@loginText;
   font-family:'Ubuntu';
   margin:0 auto;
@@ -35,7 +36,7 @@
   margin: auto;
   text-align: center;
   display: block;
-  background-color: #ECF0F1;
+  background-color: #858585;
   border-radius: 3px;
 }
 
@@ -43,13 +44,12 @@
   display: block;
   width:300px;
   height:50px;
-  color: @loginText;
+  color: @inputText;
   margin: 0 auto;
   margin-top: 20px;
   margin-bottom: 10px;
   text-align: center;
   font-size: 25px;
-  
   font-family:'Ubuntu';
   font-weight:300;
   border:0;
@@ -64,25 +64,66 @@
 	margin-top:40px;
 	margin-bottom: 20px;
 	border: none;
+	cursor: pointer;
 }
 
 .signUp{
   width:500px;
+  height:500px;
   margin: auto;
   text-align: center;
-  border: 1px solid black;
+  margin-top: 100px;
+  padding:20px 0;
+  font-size:50px;
+  color:@loginText;
+  font-family:'Ubuntu';
+  margin:0 auto;
+  text-align:center;
+  -webkit-perspective: 1000;
+  // border: 1px solid black;
+  // background-color: #F4F4F4;
 }
 
 .signUp input{
-  display: inline-block;
-  margin-top: 50px;
-  border: 1px solid black;
+  
+  display: block;
+  width:300px;
+  height:50px;
+  color: @inputText;
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  text-align: center;
+  font-size: 25px;
+  
+  font-family:'Ubuntu';
+  font-weight:300;
+  border:0;
+  border-bottom: 2px solid #2c3e50;
+  background-color: #ECF0F1;
+}
+
+.signUp input[type="submit"]{
+	background-color: #E74C3C;
+	color:white;
+	border-radius: 3px;
+	margin-top:40px;
+	margin-bottom: 20px;
+	border: none;
+	cursor: pointer;
 }
 
 .login a{
 	font-size: 20px;
-	margin: 0 auto;
+	margin: auto;
 	padding: 0;
+	position: relative;
+	top:-50px;
+	font-family:'Ubuntu';
+	text-decoration: none;
+	background-color: #ECF0F1;
+	padding:10px;
+	border-radius: 3px;
 }
 
 //Login Flipping styles
@@ -116,7 +157,8 @@
   position: absolute;
   z-index: 1;
   color: white;
-  cursor: pointer;
+  
+  //background-color: @frontColor:
 }
 #insideContainer .card .back {
   -webkit-transform: rotatey(-180deg);
@@ -124,9 +166,14 @@
           transform: rotatey(-180deg);
   background: #3399ff;
   color: black;
-  cursor: pointer;
+ 
   text-align: center;
 }
 .face {
   border-radius: 5px;
+}
+
+.error{
+  color:#FF2626;
+  font-size: 20px;
 }

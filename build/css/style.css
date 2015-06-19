@@ -257,9 +257,11 @@ header {
   display: inline-block;
 }
 h1 {
-  padding: 15px;
-  font-size: 50px;
+  padding: 5px;
+  font-size: 56px;
   color: white;
+  font-family: 'Ubuntu';
+  font-weight: 300;
 }
 h2 {
   font-size: 30px;
@@ -500,9 +502,9 @@ textarea {
   border: 1px solid black;
 }
 #insideContainer {
-  padding: 120px 0;
-  font-size: 62px;
-  color: black;
+  padding: 20px 0;
+  font-size: 50px;
+  color: white;
   font-family: 'Ubuntu';
   margin: 0 auto;
   text-align: center;
@@ -513,14 +515,14 @@ textarea {
   margin: auto;
   text-align: center;
   display: block;
-  background-color: #ECF0F1;
+  background-color: #858585;
   border-radius: 3px;
 }
 .login input {
   display: block;
   width: 300px;
   height: 50px;
-  color: black;
+  color: #4d4d4d;
   margin: 0 auto;
   margin-top: 20px;
   margin-bottom: 10px;
@@ -539,22 +541,57 @@ textarea {
   margin-top: 40px;
   margin-bottom: 20px;
   border: none;
+  cursor: pointer;
 }
 .signUp {
   width: 500px;
+  height: 500px;
   margin: auto;
+  margin-top: 100px;
+  padding: 20px 0;
+  font-size: 50px;
+  color: white;
+  font-family: 'Ubuntu';
+  margin: 0 auto;
   text-align: center;
-  border: 1px solid black;
+  -webkit-perspective: 1000;
 }
 .signUp input {
-  display: inline-block;
-  margin-top: 50px;
-  border: 1px solid black;
+  display: block;
+  width: 300px;
+  height: 50px;
+  color: #4d4d4d;
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  text-align: center;
+  font-size: 25px;
+  font-family: 'Ubuntu';
+  font-weight: 300;
+  border: 0;
+  border-bottom: 2px solid #2c3e50;
+  background-color: #ECF0F1;
+}
+.signUp input[type="submit"] {
+  background-color: #E74C3C;
+  color: white;
+  border-radius: 3px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  border: none;
+  cursor: pointer;
 }
 .login a {
   font-size: 20px;
-  margin: 0 auto;
+  margin: auto;
   padding: 0;
+  position: relative;
+  top: -50px;
+  font-family: 'Ubuntu';
+  text-decoration: none;
+  background-color: #ECF0F1;
+  padding: 10px;
+  border-radius: 3px;
 }
 #insideContainer .card.flipped {
   -webkit-transform: rotatey(-180deg);
@@ -585,7 +622,6 @@ textarea {
   position: absolute;
   z-index: 1;
   color: white;
-  cursor: pointer;
 }
 #insideContainer .card .back {
   -webkit-transform: rotatey(-180deg);
@@ -593,11 +629,14 @@ textarea {
   transform: rotatey(-180deg);
   background: #3399ff;
   color: black;
-  cursor: pointer;
   text-align: center;
 }
 .face {
   border-radius: 5px;
+}
+.error {
+  color: #FF2626;
+  font-size: 20px;
 }
 .tagContain {
   position: absolute;
@@ -628,4 +667,19 @@ textarea {
 .filterBut,
 .tagContain {
   z-index: 10000;
+}
+.filterBut i {
+  padding-top: 15px;
+}
+.fa-sign-out {
+  color: white;
+  background-color: #2c3e50;
+  font-size: 50px;
+  padding: 5px;
+  border-radius: 3px;
+  position: absolute;
+  bottom: 20px;
+  right: 0;
+  cursor: pointer;
+  text-decoration: none;
 }
