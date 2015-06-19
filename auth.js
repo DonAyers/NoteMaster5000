@@ -32,7 +32,7 @@ module.exports = function(username, pass, callback){
 		dbPass = data[0].password;
 		console.log(dbUser, username);
 		console.log(dbPass, pass);
-		return test = false;
+		test = false;
 		
 		
 
