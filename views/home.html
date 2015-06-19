@@ -28,9 +28,9 @@
   </div>
   <div class="fa fa-sign-out"></div>
   
-<div id="container">
+<div id="container" data-user="{{user}}">
 	{{#each notes}}
-		<div class="note" data-id="{{id}}" data-color:"{{color}}" data-user="{{user}}">
+		<div class="note" data-id="{{id}}" data-color:"{{color}}">
         <div class="card"> 
             <div class="face front" style="background-color:{{color}}"> 
               <p class="message">{{content}}</p>

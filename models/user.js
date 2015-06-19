@@ -27,6 +27,19 @@ var User = Backbone.Model.extend({
 			callback();
 		});
 		//when done, call callback
+	},
+	loadUsers: function(callback){
+		var self = this;
+		//select users from db
+		var q = "SELECT * FROM users;";
+		sql.connection.all(q, function(err, results){
+			//populate list from said data
+			self.reset(results);
+			//console.log(results);
+			//call callback
+			callback();
+		});
+		
 	}
 });
 

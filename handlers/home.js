@@ -1,6 +1,6 @@
 //home.js
+
 var NoteList = require("../models/noteList");
-var auth = require("../auth");
 
 module.exports = function(req, res){
 	var list = new NoteList();
@@ -16,12 +16,12 @@ module.exports = function(req, res){
 				console.log("loggedIn");
 				var reply = res.view("home", {
 					title: "NoteMaster",
-					notes: data
-				});
-				//reply.state("loggedIn", user);	
+					notes: data,
+					user: user
+				});	
 			}
 		}else{
-			var reply = res.view("login", {
+			res.redirect("login", {
 				title: "NoteMaster5000"
 			});
 			//reply.state("loggedIn", "true");

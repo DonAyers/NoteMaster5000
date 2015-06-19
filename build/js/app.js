@@ -89,10 +89,11 @@ $(document).ready(function(){
     
     var el = $(this).closest(".note");
     var id = el.attr("data-id");
-    var user = "Tim";
+    var user = $("#container").attr("data-user");
     var content = el.find(".noteArea").val();
     var tag = el.find(".tagBoxSmall").val();
     var color = tempColor;
+    console.log(id, user, content, tag, color);
 
     var url ="update/";
 
@@ -111,9 +112,9 @@ $(document).ready(function(){
     
     request.done(function() {
       console.log("success");
-      console.log(user, content, tag,color);
+      //console.log(user, content, tag,color);
       
-    document.location.reload(true);
+    //document.location.reload(true);
     
       
     });
@@ -130,10 +131,12 @@ $(document).ready(function(){
   });
 
   $(".fa-floppy-o").click(function(){
+    console.log("floppy clicked");
     var content = $(".contentBox").val();
     var tag = $(".tagBox").val();
     var color = tempColor;
-    var user = $(".note").attr("data-user");
+    var user = $("#container").attr("data-user");
+    
     if(user !=="" && user !== undefined){
     
       var request = $.ajax({
@@ -186,6 +189,7 @@ $(".signUp input[type=submit]").click(function(){
     var confirmPass = $("input[name=confirm]").val();
     console.log(username, password, confirmPass );
     
+
     if(password == confirmPass){
       console.log("pass = confirmPass");
       var request = $.ajax({
@@ -200,7 +204,7 @@ $(".signUp input[type=submit]").click(function(){
       request.done(function() {
         console.log( "success" );
         
-        //document.location.reload(true);
+        document.location.reload(true);
       });
         
       
@@ -302,5 +306,13 @@ $(".signUp input[type=submit]").click(function(){
     Cookies.remove('loggedIn');
     window.location.replace("/");
   });
+
+  $(document).scroll(function(){
+    console.log("scroll");
+    var height = $(document).height();
+    $(".fa-sign-out").velocity({top: }, 200);
+  });
+  
+  
 
 });

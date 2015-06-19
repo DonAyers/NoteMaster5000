@@ -7,9 +7,14 @@ module.exports = [
 		handler: require("./handlers/home")
 	},
 	{
-		method: "POST",
+		method: "GET",
 		path: "/login",
 		handler: require("./handlers/login")
+	},
+	{
+		method: "POST",
+		path: "/login",
+		handler: require("./handlers/loginAuth")
 	},
 	{
 	    method: "POST",

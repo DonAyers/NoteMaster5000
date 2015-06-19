@@ -19,6 +19,7 @@ var Note = Backbone.Model.extend({
 		callback = callback || function(){};
 		//get its own data
 		var data = this.toJSON();
+		console.log(data);
 		// run and insert on the db
 		
 		//pass in its data
@@ -49,9 +50,11 @@ var Note = Backbone.Model.extend({
 	update: function(callback){
 		callback = callback || function(){};
 		var data = this.toJSON();
-		var statement = sql.connection.prepare(UPDATE);
 		console.log(data);
+		var statement = sql.connection.prepare(UPDATE);
+		
 		statement.run({
+			$user:data.user,
 			$id: data.id,
 			$content: data.content,
 			$tag: data.tag,
