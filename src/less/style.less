@@ -1,6 +1,8 @@
 @header: #2c3e50;
 
 @import "reset.less";
+@import "login.less";
+@import "tagList.less";
 
 
 .note {
@@ -350,8 +352,7 @@ textarea{
 .ui-resizable-nw { cursor: nw-resize; width: 9px; height: 9px; left: -5px; top: -5px; }
 .ui-resizable-ne { cursor: ne-resize; width: 9px; height: 9px; right: -5px; top: -5px;}
 
-@import "login.less";
-@import "tagList.less";
+
 //@import "test.less";
 
 .fa-sign-out{
@@ -365,4 +366,9 @@ textarea{
   right:0;
   cursor: pointer;
   text-decoration: none;
+  position: fixed;  
+}
+
+.addContain, .tagContain{
+  position: fixed;
 }

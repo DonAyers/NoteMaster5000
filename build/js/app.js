@@ -24,25 +24,18 @@ $(document).ready(function(){
       ]
   });
 
-  // var user = $(".note").attr("data-user");
-  // console.log(user);
-  // var tags = [];
-  // var uniqueTags = [];
 
-  // $('.tag').each(function (index, value) {
-  //   tags.push($(value).text());
-  // });
-
+  var tags = $(".tagLink");
+  var unique = [];
   // console.log(tags);
-  // $.each(tags, function (index, value){
-  //   if($.inArray(value, uniqueTags) === -1){
-  //     $(".tagContain ul").append("<li><a href='" + user + "/" + value + "'>" + value + "</a>");
-  //   }
-  // }); 
+  $.each(tags, function(i, value){
+    var text = $(value).attr("href")
+    if($.inArray(text, unique) !== -1){
+      $(this).remove();
+    }
+    unique.push(text);
 
-  //uniqueTags.push(value);
-
-
+  });
 
   
   $(".note").draggable().click(function(){
@@ -79,10 +72,6 @@ $(document).ready(function(){
       console.log( "error" );
     });
 
-    // request.always(function(){
-    //   console.log("This always Fires");
-    // });
-
   });
 
   $(".fa-save").click(function(){
@@ -114,7 +103,7 @@ $(document).ready(function(){
       console.log("success");
       //console.log(user, content, tag,color);
       
-    //document.location.reload(true);
+    document.location.reload(true);
     
       
     });
@@ -122,11 +111,6 @@ $(document).ready(function(){
     request.fail(function() {
       console.log( "error" );
     });
-
-    request.always(function(){
-      console.log("Post: " + url);
-    });
-
 
   });
 
@@ -173,61 +157,52 @@ $(document).ready(function(){
         console.log( "error" );
       });
 
-      request.always(function(){
-        console.log("always");
-      });
-
   }
 
 
   });
 
-$(".signUp input[type=submit]").click(function(){
-    
-    var username = $(".signUp input[name=username]").val();
-    var password = $(".signUp input[name=password]").val();
-    var confirmPass = $("input[name=confirm]").val();
-    console.log(username, password, confirmPass );
-    
-
-    if(password == confirmPass){
-      console.log("pass = confirmPass");
-      var request = $.ajax({
-        url: "signup/",
-        method: "POST",
-        data: {
-          username: username,
-          password: password
-        }
-      });
+  $(".signUp input[type=submit]").click(function(){
+      var username = $(".signUp input[name=username]").val();
+      var password = $(".signUp input[name=password]").val();
+      var confirmPass = $("input[name=confirm]").val();
+      console.log(username, password, confirmPass );
       
-      request.done(function() {
-        console.log( "success" );
+      if(password == confirmPass){
+        console.log("pass = confirmPass");
+        var request = $.ajax({
+          url: "signup/",
+          method: "POST",
+          data: {
+            username: username,
+            password: password
+          }
+        });
         
-        document.location.reload(true);
-      });
-        
-      
-      
-      request.fail(function() {
-        console.log( "error" );
-      });
+        request.done(function() {
+          console.log( "success" );
+          var user = $(".signUp input[name=username]").val();
+          $('.login a').click();
+          $(".messageSpan").text("Welcome " + user);
+          $(".login").velocity('callout.pulse',{
+            complete: function(){
+              $(".success").delay(1000).velocity({opacity: 0}, 1000);
+              $(".login input[name=username]").val(user);
+              $(".login input[name=password]").val($(".signUp input[name=password]").val());
+              $(".login input[type=submit]").click();
+            }
+          });
+        });
+          
+        request.fail(function() {
+          console.log( "error" );
+        });
 
-      request.always(function(){
-        console.log("always");
-      });
-
-  }else{
-    $(".signUp").velocity('callout.shake').append("<p class='error'>password doesn't match<p>");
-    $(".error").delay(1000).velocity({opacity: 0}, 1000);
-    
-
-
-  }
-
-
+    }else{
+      $(".signUp").velocity('callout.shake').append("<p class='error'>password doesn't match<p>");
+      $(".error").delay(1000).velocity({opacity: 0}, 1000);
+    }
   });
-
 
   var toggled = false;
   var position = "400px";
@@ -264,12 +239,9 @@ $(".signUp input[type=submit]").click(function(){
         tagPosition = "0px";
       }
     }});
-
   });
 
-
   $('.fa-pencil').click(function(event){
-    
     var card = event.target;
     var cardBox = $(card).closest('.note');
     var tag = $(cardBox).find('.tag').text();
@@ -278,7 +250,6 @@ $(".signUp input[type=submit]").click(function(){
     console.log(message);
     $(cardBox).find('textarea').val(message);
     $(cardBox).find('.tagBoxSmall').val(tag);
-
     $(card).closest('.card').toggleClass('flipped');
   });
 
@@ -293,7 +264,6 @@ $(".signUp input[type=submit]").click(function(){
     console.log(message);
     $(cardBox).find('textarea').val(message);
     $(cardBox).find('.tagBoxSmall').val(tag);
-
     $(card).closest('.card').toggleClass('flipped');
   });
 
@@ -306,13 +276,6 @@ $(".signUp input[type=submit]").click(function(){
     Cookies.remove('loggedIn');
     window.location.replace("/");
   });
-
-  $(document).scroll(function(){
-    console.log("scroll");
-    var height = $(document).height();
-    $(".fa-sign-out").velocity({top: }, 200);
-  });
-  
   
 
 });

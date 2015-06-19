@@ -1,5 +1,7 @@
 // routes.js
 
+var __dirname = "build";
+
 module.exports = [
 	{
 		method: "GET",
@@ -44,6 +46,16 @@ module.exports = [
 	{
 	    method: "GET",
 	    path: "/assets/{param*}",
+	    handler: {
+	        directory: {
+	            path: "build"
+
+	        }
+	    }
+	},
+	{
+	    method: "GET",
+	    path: "/{user}/assets/{param*}",
 	    handler: {
 	        directory: {
 	            path: "build"

@@ -2,6 +2,7 @@
 var hapi = require("hapi");
 var server = new hapi.Server();
 
+
 server.connection({port:8000});
 server.views({
 	engines: {
@@ -12,6 +13,8 @@ server.views({
 	layout: "layout",
 	isCached: false
 });
+
+//server.path(__dirname + '..build');
 
 var Note = require("./models/note");
 

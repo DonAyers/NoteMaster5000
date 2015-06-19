@@ -6,14 +6,13 @@ module.exports = function(req, res){
 	var list = new NoteList();
 	list.load(function(){
 		var user = req.params.user
-		console.log(user);
 		var filtered = list.where({user: user});
 		list.reset(filtered);
 		var data = list.toJSON();
 
 		if(user){
 			if(req.state["loggedIn"] == user){
-				console.log("loggedIn");
+				console.log(user, "logged in");
 				var reply = res.view("home", {
 					title: "NoteMaster",
 					notes: data,

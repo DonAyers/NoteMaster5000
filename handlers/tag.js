@@ -1,15 +1,17 @@
 //tag.js
 var NoteList = require("../models/noteList");
-var auth = require("../auth");
 
 module.exports = function(req, res){
+	
+
+
 	var list = new NoteList();
 	list.load(function(){
-		var user = req.params.user;
+	 	var user = req.params.user;
 		var tag = req.params.tag;
 
-		console.log(user, tag);
-		var filtered = list.where({user: user});
+	 	//console.log(user, tag);
+		var filtered = list.where({user: user, tag: tag});
 		list.reset(filtered);
 		var data = list.toJSON();
 
