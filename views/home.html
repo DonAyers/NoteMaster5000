@@ -9,7 +9,7 @@
       <textarea class="contentBox" placeholder="Enter your note here"></textarea>
       <i class="fa fa-tag"></i>
         <input type="text" name="tag" class="tagBox" placeholder="category">
-      <i class="fa fa-floppy-o"></i>
+      <i class="fa fa-floppy-o create"></i>
     </form>
     <div class="addBut">
       <i class="fa fa-plus"></i>
@@ -27,10 +27,11 @@
 
   </div>
   <div class="fa fa-sign-out"></div>
+  <div class="fa fa-floppy-o save"></div>
   
 <div id="container" data-user="{{user}}">
 	{{#each notes}}
-		<div class="note" data-id="{{id}}" data-color:"{{color}}">
+		<div class="note" data-id="{{id}}" data-color="{{color}}" data-pos="{{position}}" data-size="{{size}}">
         <div class="card"> 
             <div class="face front" style="background-color:{{color}}"> 
               <p class="message">{{content}}</p>

@@ -24,6 +24,11 @@ module.exports = [
 	    handler: require("./handlers/delete")
   	},
   	{
+	    method: "POST",
+	    path: "/{user}/delete/{id}",
+	    handler: require("./handlers/delete")
+  	},
+  	{
 	    method: "GET",
 	    path: "/{user}/{tag}",
 	    handler: require("./handlers/tag")
@@ -35,12 +40,22 @@ module.exports = [
   	},
   	{
 	    method: "POST",
+	    path: "/{user}/create/",
+	    handler: require("./handlers/create")
+  	},
+  	{
+	    method: "POST",
 	    path: "/signup/",
 	    handler: require("./handlers/signup")
   	},
   	{
 	    method: "POST",
 	    path: "/update/",
+	    handler: require("./handlers/update")
+  	},
+  	{
+	    method: "POST",
+	    path: "/{user}/update/",
 	    handler: require("./handlers/update")
   	},		
 	{
@@ -64,3 +79,4 @@ module.exports = [
 	    }
 	}
 ]
+

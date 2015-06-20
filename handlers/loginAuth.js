@@ -3,7 +3,11 @@
 var auth = require("../auth")
 
 module.exports = function(req, res) {
-var user = req.payload.username;
+if(req.payload.username){
+	var user = req.payload.username;
+}else{
+	var user = "anonymous";
+}
 var url = "/" + user;
 auth(user, req.payload.password, function(err, authed) {
 		if (!authed) {

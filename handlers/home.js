@@ -14,7 +14,7 @@ module.exports = function(req, res){
 			if(req.state["loggedIn"] == user){
 				console.log(user, "logged in");
 				var reply = res.view("home", {
-					title: "NoteMaster",
+					title: "NoteMaster5001",
 					notes: data,
 					user: user
 				});	

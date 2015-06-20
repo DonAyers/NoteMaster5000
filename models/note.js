@@ -3,9 +3,9 @@
 var Backbone = require("backbone");
 var sql = require("../database");
 
-var CREATE = "INSERT INTO notes (content, user, tag, color) VALUES ($content, $user, $tag, $color);";
+var CREATE = "INSERT INTO notes (content, user, tag, color, position, size) VALUES ($content, $user, $tag, $color, $position, $size);";
 var DELETE = "DELETE FROM notes WHERE rowid = $id;";
-var UPDATE = "UPDATE notes SET content = $content, user = $user, tag = $tag, color = $color WHERE rowid = $id;";
+var UPDATE = "UPDATE notes SET content = $content, user = $user, tag = $tag, color = $color , position = $position, size = $size WHERE rowid = $id;";
 
 var Note = Backbone.Model.extend({
 	defaults: {
@@ -13,6 +13,8 @@ var Note = Backbone.Model.extend({
 		user: "anonymous",
 		tag: "",
 		color: "#e74c3c",
+		position: "",
+		size: "",
 		id: null
 	},
 	create: function(callback){
@@ -27,7 +29,9 @@ var Note = Backbone.Model.extend({
 			$content: data.content,
 			$user: data.user,
 			$tag: data.tag,
-			$color: data.color
+			$color: data.color,
+			$position: data.position,
+			$size: data.size
 		}, function(err){
 			if(err) console.log(err);
 			callback();
@@ -58,7 +62,9 @@ var Note = Backbone.Model.extend({
 			$id: data.id,
 			$content: data.content,
 			$tag: data.tag,
-			$color: data.color
+			$color: data.color,
+			$position: data.position,
+			$size: data.size
 		}, function(err){
 			if(err) console.log(err);
 			callback();

@@ -2,12 +2,12 @@
 
 var tempColor = "#e74c3c";
 var zIndex = 1;
-$(".note")
-    .velocity("transition.bounceDownIn", {
-    display: null,
-    stagger: 25,
-    drag:true
-  });
+// $(".note")
+//     .velocity("transition.bounceDownIn", {
+//     display: null,
+//     stagger: 25,
+//     drag:true
+//   });
 
 $(document).ready(function(){
 
@@ -24,6 +24,21 @@ $(document).ready(function(){
       ]
   });
 
+  $.each($(".note"), function (i, value){
+    var size = $(value).attr("data-size");
+    if(size){
+
+      var sizeJSON = JSON.parse(size);
+      var height = sizeJSON[0];
+      var width = sizeJSON[1];
+      //console.log(height, width, sizeJSON);
+      $(value).velocity({
+        height: height,
+        width: width
+      });
+    }
+  });
+
 
   var tags = $(".tagLink");
   var unique = [];
@@ -37,8 +52,13 @@ $(document).ready(function(){
 
   });
 
-  
-  $(".note").draggable().click(function(){
+  var dragPosition = "";
+  $(".note").draggable({
+    stop: function(event, ui){
+      dragPosition = ui.position;
+      console.log(dragPosition);
+    }
+  }).click(function(){
     var current = $(this);
     zIndex++;
     current.zIndex(1);
@@ -50,8 +70,43 @@ $(document).ready(function(){
       maxWidth: 750,
       minHeight: 300,
       minWidth: 200,
-      ghost: true
+      ghost: true,
+      stop: function(e){
+        var el = $(e).closest(".note");
+        var id = el.attr("data-id");
+        var user = $("#container").attr("data-user");
+        var color = el.attr("data-color");
+        var tag = el.find('.tag').text();
+        var content = el.find('.message').text();
+        
+        var size = [el.height(), el.width()];
+        var position = [dragPosition.top, dragPosition.left];
+
+        var sizeJSON = JSON.stringify(size);
+        var posJSON = JSON.stringify(position);
+        console.log(sizeJSON);
+        console.log(posJSON);
+        
+        var url ="update/";
+
+        var request = $.ajax({
+          url: url,
+          method: "POST",
+          data: {
+            id:id,
+            user: user,
+            tag: tag,
+            content: content,
+            color: color,
+            position: posJSON,
+            size: sizeJSON
+          }
+          
+        });
+      }
   });
+
+
 
 
   $(".fa-times").click(function(){
@@ -82,8 +137,16 @@ $(document).ready(function(){
     var content = el.find(".noteArea").val();
     var tag = el.find(".tagBoxSmall").val();
     var color = tempColor;
-    console.log(id, user, content, tag, color);
+    //console.log(id, user, content, tag, color);
+    
+    var size = [el.height(), el.width()];
+    var position = [dragPosition.top, dragPosition.left];
 
+    var sizeJSON = JSON.stringify(size);
+    var posJSON = JSON.stringify(position);
+    console.log(sizeJSON);
+    console.log(posJSON);
+    
     var url ="update/";
 
     var request = $.ajax({
@@ -94,7 +157,9 @@ $(document).ready(function(){
         user: user,
         tag: tag,
         content: content,
-        color: color
+        color: color,
+        position: posJSON,
+        size: sizeJSON
       }
       
     });
@@ -113,13 +178,49 @@ $(document).ready(function(){
     });
 
   });
+  $(".save").click(function(){
+     $.each($(".note"), function (i, value){
+        var el = $(this);
+        var id = el.attr("data-id");
+        var user = $("#container").attr("data-user");
+        var color = el.attr("data-color");
+        var tag = el.find('.tag').text();
+        var content = el.find('.message').text();
 
-  $(".fa-floppy-o").click(function(){
+        var size = [el.height(), el.width()];
+        var position = [dragPosition.top, dragPosition.left];
+
+        var sizeJSON = JSON.stringify(size);
+        var posJSON = JSON.stringify(position);
+        console.log(posJSON, sizeJSON, color, id);
+        
+        var url ="update/";
+
+        var request = $.ajax({
+          url: url,
+          method: "POST",
+          data: {
+            id:id,
+            user: user,
+            tag: tag,
+            content: content,
+            color: color,
+            position: posJSON,
+            size: sizeJSON
+          }
+          
+        });
+    });
+  });
+      
+  $(".create").click(function(){
     console.log("floppy clicked");
     var content = $(".contentBox").val();
     var tag = $(".tagBox").val();
     var color = tempColor;
     var user = $("#container").attr("data-user");
+    var position = null;
+    var size = null;
     
     if(user !=="" && user !== undefined){
     
@@ -130,7 +231,9 @@ $(document).ready(function(){
           user: user,
           tag: tag,
           content: content,
-          color: color
+          color: color,
+          position: position,
+          size: size
         }
       });
       
@@ -257,13 +360,6 @@ $(document).ready(function(){
   $('.login a').click(function(event){
     console.log("a clicked");
     var card = event.target;
-    var cardBox = $(card).closest('.note');
-    var tag = $(cardBox).find('.tag').text();
-    var message = $(cardBox).find('.message').text();
-    var color = $(this).css('backgroundColor');
-    console.log(message);
-    $(cardBox).find('textarea').val(message);
-    $(cardBox).find('.tagBoxSmall').val(tag);
     $(card).closest('.card').toggleClass('flipped');
   });
 
