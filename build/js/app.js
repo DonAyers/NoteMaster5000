@@ -9,6 +9,34 @@ var zIndex = 1;
 //     drag:true
 //   });
 
+  $.each($(".note"), function (i, value){
+    var size = $(value).attr("data-size");
+    var position = $(value).attr("data-pos");
+    if(size){
+
+      var sizeJSON = JSON.parse(size);
+      var height = sizeJSON[0];
+      var width = sizeJSON[1];
+      var posJSON = JSON.parse(position);
+      var top = posJSON[1] + "%";
+      var left = posJSON[0] + "%";
+       //console.log(height, width, sizeJSON);
+      $(value).velocity({
+        height: height,
+        width: width,
+        top: top,
+        left: left
+
+      });
+      // $(value).css({
+      //   "height": height,
+      //   "width": width,
+      //   "top": top,
+      //   "left": left 
+      // });
+    }
+  });
+
 $(document).ready(function(){
 
   $(".colorPicker, #plusColor").spectrum({
@@ -24,20 +52,7 @@ $(document).ready(function(){
       ]
   });
 
-  $.each($(".note"), function (i, value){
-    var size = $(value).attr("data-size");
-    if(size){
 
-      var sizeJSON = JSON.parse(size);
-      var height = sizeJSON[0];
-      var width = sizeJSON[1];
-      //console.log(height, width, sizeJSON);
-      $(value).velocity({
-        height: height,
-        width: width
-      });
-    }
-  });
 
 
   var tags = $(".tagLink");
@@ -55,8 +70,8 @@ $(document).ready(function(){
   var dragPosition = "";
   $(".note").draggable({
     stop: function(event, ui){
-      dragPosition = ui.position;
-      console.log(dragPosition);
+      dragPosition = ui.offset;
+      console.log(ui.offset);
     }
   }).click(function(){
     var current = $(this);
@@ -72,20 +87,20 @@ $(document).ready(function(){
       minWidth: 200,
       ghost: true,
       stop: function(e){
-        var el = $(e).closest(".note");
-        var id = el.attr("data-id");
-        var user = $("#container").attr("data-user");
-        var color = el.attr("data-color");
-        var tag = el.find('.tag').text();
-        var content = el.find('.message').text();
-        
+        var el = $(this).closest(".note");
+        var screen = $(document).width();
         var size = [el.height(), el.width()];
-        var position = [dragPosition.top, dragPosition.left];
+        var getPos = el.offset();
+        var position = [screen / getPos.top,  screen / getPos.left];
+        console.log(position);
 
-        var sizeJSON = JSON.stringify(size);
-        var posJSON = JSON.stringify(position);
-        console.log(sizeJSON);
-        console.log(posJSON);
+
+        // if (ui.position.left < 50) {
+        //     $(this).css({
+        //         left: 50,
+        //         width: 150
+        //     });
+        // }
         
         var url ="update/";
 
@@ -93,15 +108,23 @@ $(document).ready(function(){
           url: url,
           method: "POST",
           data: {
-            id:id,
-            user: user,
-            tag: tag,
-            content: content,
-            color: color,
-            position: posJSON,
-            size: sizeJSON
+            id:el.attr("data-id"),
+            user: $("#container").attr("data-user"),
+            tag: el.find('.tag').text(),
+            content: el.find('.message').text(),
+            color: el.attr("data-color"),
+            position: JSON.stringify(position),
+            size: JSON.stringify(size)
           }
           
+        });
+
+        request.success(function(){
+          console.log("success");
+        });
+
+        request.done(function() {
+          console.log("resize saved");
         });
       }
   });
