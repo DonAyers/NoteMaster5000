@@ -327,7 +327,7 @@ table {
   -webkit-perspective: 1000;
   width: 200px;
   height: 300px;
-  position: absolute;
+  position: relative;
   margin: 10px;
   display: inline-block;
 }
