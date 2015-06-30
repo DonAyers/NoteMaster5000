@@ -13,7 +13,7 @@ var Note = Backbone.Model.extend({
 		user: "anonymous",
 		tag: "",
 		color: "#e74c3c",
-		position: "[-166,795]",
+		position: "[-900,750]",
 		size: "",
 		id: null
 	},

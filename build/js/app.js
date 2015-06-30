@@ -1,4 +1,41 @@
 //var $ = require('jquery');
+console.log("$(window).height()",$(window).width());
+console.log("$(window).width()",$(document).width());
+var screenWidth = $(document).width();
+var screenHeight = $(document).height();
+
+
+$.each($(".note"), function (i, value){
+    var size = $(value).attr("data-size");
+    var position = $(value).attr("data-pos");
+    if(size){
+
+      var sizeJSON = JSON.parse(size);
+      var height = sizeJSON[0];
+      var width = sizeJSON[1];
+      var posJSON = JSON.parse(position);
+      var top = posJSON[0] + "px";
+      var left = posJSON[1] + "px";
+      console.log(left, top);
+      $(value).velocity({
+        height: height,
+        width: width,
+        top: top,
+        left: left
+
+      });
+
+      console.log(value);
+      
+
+      // $(value).css({
+      //   "height": height,
+      //   "width": width,
+      //   "top": top,
+      //   "left": left 
+      // });
+    }
+  });
 
 var tempColor = "#e74c3c";
 var zIndex = 1;
@@ -9,35 +46,9 @@ var zIndex = 1;
 //     drag:true
 //   });
 
-  $.each($(".note"), function (i, value){
-    var size = $(value).attr("data-size");
-    var position = $(value).attr("data-pos");
-    if(size){
-
-      var sizeJSON = JSON.parse(size);
-      var height = sizeJSON[0];
-      var width = sizeJSON[1];
-      var posJSON = JSON.parse(position);
-      var top = posJSON[1] + "%";
-      var left = posJSON[0] + "%";
-       //console.log(height, width, sizeJSON);
-      $(value).velocity({
-        height: height,
-        width: width,
-        top: top,
-        left: left
-
-      });
-      // $(value).css({
-      //   "height": height,
-      //   "width": width,
-      //   "top": top,
-      //   "left": left 
-      // });
-    }
-  });
-
 $(document).ready(function(){
+
+  
 
   $(".colorPicker, #plusColor").spectrum({
       showPaletteOnly: true,
@@ -52,7 +63,7 @@ $(document).ready(function(){
       ]
   });
 
-
+  
 
 
   var tags = $(".tagLink");
@@ -67,17 +78,51 @@ $(document).ready(function(){
 
   });
 
+  var saveAll = function(event, ui){
+
+  };
+
   var dragPosition = "";
   $(".note").draggable({
     stop: function(event, ui){
-      dragPosition = ui.offset;
-      console.log(ui.offset);
-    }
+      var el = $(this).closest(".note");
+      screenWidth = $(document).width();
+      screenHeight = $(document).height();
+      var size = [el.height(), el.width()];
+      var getPos = el.position();
+      var position = [Math.round(getPos.top), Math.round(getPos.left)];
+      console.log(position);
+      
+      var url ="update/";
+
+      var request = $.ajax({
+        url: url,
+        method: "POST",
+        data: {
+          id:el.attr("data-id"),
+          user: $("#container").attr("data-user"),
+          tag: el.find('.tag').text(),
+          content: el.find('.message').text(),
+          color: el.attr("data-color"),
+          position: JSON.stringify(position),
+          size: JSON.stringify(size)
+        }
+        
+      });
+    },
+    start: function(){
+      
+    },
+    scrollSpeed: 10,
+    scrollSensitivity: 10,
+    scroll: false,
+    grid: [ 2, 2 ]
   }).click(function(){
     var current = $(this);
     zIndex++;
     current.zIndex(1);
     $(".note").not(current).zIndex(0);
+    console.log($(this).position());
   });
 
   $(".note").resizable({
@@ -85,13 +130,14 @@ $(document).ready(function(){
       maxWidth: 750,
       minHeight: 300,
       minWidth: 200,
-      ghost: true,
-      stop: function(e){
+      handles: "all",
+      stop: function(){
         var el = $(this).closest(".note");
-        var screen = $(document).width();
+        screenWidth = $(document).width();
+        screenHeight = $(document).height();
         var size = [el.height(), el.width()];
-        var getPos = el.offset();
-        var position = [screen / getPos.top,  screen / getPos.left];
+        var getPos = el.position();
+        var position = [Math.round(getPos.top), Math.round(getPos.left)];
         console.log(position);
 
 
@@ -167,8 +213,8 @@ $(document).ready(function(){
 
     var sizeJSON = JSON.stringify(size);
     var posJSON = JSON.stringify(position);
-    console.log(sizeJSON);
-    console.log(posJSON);
+    //console.log(sizeJSON);
+    //console.log(posJSON);
     
     var url ="update/";
 
@@ -373,7 +419,7 @@ $(document).ready(function(){
     var tag = $(cardBox).find('.tag').text();
     var message = $(cardBox).find('.message').text();
     var color = $(this).css('backgroundColor');
-    console.log(message);
+  
     $(cardBox).find('textarea').val(message);
     $(cardBox).find('.tagBoxSmall').val(tag);
     $(card).closest('.card').toggleClass('flipped');
@@ -381,7 +427,7 @@ $(document).ready(function(){
 
   
   $('.login a').click(function(event){
-    console.log("a clicked");
+    
     var card = event.target;
     $(card).closest('.card').toggleClass('flipped');
   });
