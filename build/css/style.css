@@ -290,6 +290,9 @@ table {
   overflow: none;
   height: none;
 }
+.backToLogin {
+  cursor: pointer;
+}
 .tagContain {
   position: absolute;
   width: 300px;

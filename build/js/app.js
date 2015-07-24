@@ -426,7 +426,7 @@ $(document).ready(function(){
   });
 
   
-  $('.login a').click(function(event){
+  $('.login a, .backToLogin').click(function(event){
     
     var card = event.target;
     $(card).closest('.card').toggleClass('flipped');
