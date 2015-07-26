@@ -46,7 +46,7 @@ module.exports = [
   	{
 	    method: "POST",
 	    path: "/signup/",
-	    handler: require("./handlers/signup")
+	    handler: require("./handlers/signUp")
   	},
   	{
 	    method: "POST",
