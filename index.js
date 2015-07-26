@@ -2,8 +2,9 @@
 var hapi = require("hapi");
 var server = new hapi.Server();
 
+var port = process.env.PORT || 8000;
 
-server.connection({port:8000});
+server.connection({port:port});
 server.views({
 	engines: {
 		html: require("handlebars")
